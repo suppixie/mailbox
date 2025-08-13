@@ -1,38 +1,17 @@
-.App {
-  text-align: center;
-}
+.app-frame{display:flex;flex-direction:column;height:100%}
+.topbar{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:2px solid var(--stroke);}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{font-size:42px;font-weight:700}
+.hamburger{font-size:28px}
+.search{flex:1;max-width:760px;margin:0 32px;background:#f5f1ff;border:3px solid var(--stroke);border-radius:999px;height:48px;display:flex;align-items:center;padding:0 14px;gap:8px}
+.search .icon{opacity:.6}
+.search input{border:0;background:transparent;outline:0;width:100%}
+.right-utilities{display:flex;align-items:center;gap:10px}
+.view-toggle{display:flex;gap:8px;background:#f5f1ff;border:2px solid var(--stroke);padding:4px 6px;border-radius:14px}
+.view-toggle button{width:36px;height:32px;border-radius:8px}
+.view-toggle button.active{background:var(--accent);color:white}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.content{display:flex;height:calc(100% - 64px)}
+.mail-area{flex:1;padding:14px 18px 24px 12px;overflow:auto}
+.toolbar{display:flex;gap:12px;margin:8px 0 16px 0}
+.toolbar button{width:40px;height:36px;border-radius:10px;background:#f5f1ff;border:2px solid var(--stroke)}
