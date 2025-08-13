@@ -1,0 +1,9 @@
+.list.condensed{display:flex;flex-direction:column;gap:10px}
+.list.condensed .row{display:grid;grid-template-columns:28px 280px 1fr 120px;align-items:center;border:3px solid var(--stroke);border-radius:12px;padding:8px 10px;background:#fff}
+.list.condensed .row.read{background:#f6f6f9;font-weight:500}
+.list.condensed .row.unread{font-weight:700}
+.list.condensed .row:hover{background:var(--row-hover);box-shadow:var(--row-shadow)}
+.list.condensed .star.on{color:#f5b301}
+.list.condensed .from{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list.condensed .subject{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list.condensed .time{text-align:right}

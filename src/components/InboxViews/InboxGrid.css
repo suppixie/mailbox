@@ -1,0 +1,11 @@
+.grid{display:grid;grid-template-columns:repeat(2, minmax(320px,1fr));gap:14px}
+.card{border:3px solid var(--stroke);border-radius:16px;padding:12px;background:#fff;display:flex;flex-direction:column;gap:8px}
+.card.read{background:#f6f6f9}
+.card:hover{background:var(--row-hover);box-shadow:var(--row-shadow)}
+.card-top{display:flex;justify-content:space-between;align-items:center}
+.card .star.on{color:#f5b301}
+.card .avatar{width:48px;height:48px;border-radius:50%;background:#e9e1ff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.card .from{font-weight:700}
+.card.read .from{font-weight:500}
+.card .subject{font-size:15px}
+.card .excerpt{color:var(--muted)}
