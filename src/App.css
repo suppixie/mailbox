@@ -50,10 +50,28 @@
   background:transparent;
   outline:0;
   width:100%}
-.right-utilities{display:flex;align-items:center;gap:10px}
-.view-toggle{display:flex;gap:8px;background:#f5f1ff;border:2px solid var(--stroke);padding:4px 6px;border-radius:14px}
-.view-toggle button{width:36px;height:32px;border-radius:8px}
-.view-toggle button.active{background:var(--accent);color:white}
+
+.right-utilities{
+  display:flex;
+  align-items:center;
+  gap:10px}
+
+.view-toggle{
+  display:flex;
+  gap:8px;
+  background:#f5f1ff;
+  border:2px solid var(--stroke);
+  padding:4px 6px;
+  border-radius:40px}
+
+.view-toggle button{
+  width:36px;
+  height:32px;
+  border-radius:80px}
+
+.view-toggle button.active{
+  background:#8562E5;
+  color:white}
 
 .content{
   display:grid;
@@ -61,6 +79,7 @@
   height:calc(100% - 64px)
 }
 .mail-area{
+  font-size: 14px;
   position: relative;
   flex:1;
   padding:8px 18px 24px 12px;
