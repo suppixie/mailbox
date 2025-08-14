@@ -1,16 +1,108 @@
-.list.comfortable{display:flex;flex-direction:column;gap:12px}
-.list .row{position:relative;display:grid;grid-template-columns:28px 52px 1fr 140px;align-items:center;border:3px solid var(--stroke);border-radius:14px;padding:10px;background:#fff;transition:.15s;}
-.list .row.unread{font-weight:700}
-.list .row.read{background:#f6f6f9;color:var(--ink);font-weight:500}
-.list .row:hover{background:var(--row-hover);box-shadow:var(--row-shadow)}
-.star{width:24px;height:24px;border-radius:6px}
-.star.on{color:#f5b301}
-.avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#e9e1ff;font-weight:800}
-.main{padding:0 8px}
-.top{display:flex;justify-content:space-between;align-items:center}
-.from{font-size:16px}
-.subject{margin-top:4px}
-.excerpt{color:var(--muted)}
-.actions{display:flex;gap:10px;justify-content:flex-end;opacity:0;transition:.12s}
-.row:hover .actions{opacity:1}
-.actions button{width:34px;height:30px;border-radius:10px;background:#f5f1ff;border:2px solid var(--stroke)}
+.list.comfortable{
+    display:flex;
+    flex-direction:column;
+
+    max-height: 70vh;
+    overflow-y: auto;
+    width: 100%;}
+
+.list .row{
+    position:relative;
+    display:grid;
+    grid-template-columns:25% 60% 15%;
+    align-items:center;
+    border-radius:14px;
+    padding:10px;
+    background:#fff;
+    transition:.15s;
+}
+.list .row .column-1{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+.list .row .column-3{
+    align-items: center;
+    padding-right: 1vw;
+}
+.list .row.unread{
+    font-weight:700;
+    border-bottom:3px solid #9B77FF;
+    border-left:3px solid #9B77FF;}
+
+.list .row.read{
+    background:#EDEDED;
+    color:var(--ink);
+    font-weight:400;
+    border-bottom:3px solid var(--stroke);
+    border-left:3px solid var(--stroke);
+}
+
+.list .row:hover{
+    background:var(--row-hover);
+    box-shadow:var(--row-shadow)}
+
+.star{
+    width:30px;
+    height:30px;
+    border-radius:6px}
+.star.on{
+    color:#f5b301}
+.avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#e9e1ff;
+    font-weight:800}
+
+.main{
+    padding:0 8px}
+
+
+.from{
+    font-size:14px}
+
+.subject{
+    margin-top:4px;
+    margin-bottom:6px;
+    }
+
+.excerpt{
+    color:var(--muted)}
+
+.date-time{
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    align-items: center;
+    padding-right: 2px;
+    transition: opacity 0.12s;
+    opacity: 1;
+    vertical-align:bottom;
+}
+.actions{
+    display: inline-flex;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s;
+}
+
+.row:hover .actions{
+    opacity:1;
+    pointer-events: auto;}
+
+.actions button{
+    width:34px;
+    height:30px;
+    cursor: pointer;
+}

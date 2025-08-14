@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./InboxComfortable.css";
-import { FaStar, FaRegStar } from "react-icons/fa";
+import { FaStar, FaRegStar, FaTag , FaTrash , FaEnvelope , FaEnvelopeOpen } from "react-icons/fa";
 import DeletePopup from "../Popups/DeletePopup.js";
 import LabelPopup from "../Popups/LabelPopup.js";
 
@@ -29,6 +29,7 @@ export default function InboxComfortable({
           onMouseLeave={() => setActionHoverId(null)}
           onClick={() => onOpenEmail(m.id)}
         >
+          <div className="column-1">
           <button
             className={`star ${m.starred ? "on" : ""}`}
             onClick={(e) => {
@@ -39,22 +40,39 @@ export default function InboxComfortable({
                           >{m.starred ? React.createElement(FaStar) : React.createElement(FaRegStar)}</button>
 
           <div className="avatar">{m.avatar}</div>
-          <div className="main">
-            <div className="top">
-              <div className="from">{m.from}</div>
-              <div className="time">{new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
-            </div>
+          <div className="from">{m.from}</div>
+
+          </div>
+          <div className="main column-2">
+         
             <div className="subject">{m.subject}</div>
             <div className="excerpt">{m.excerpt}</div>
           </div>
-
-          <div className={`actions ${actionHoverId === m.id ? "show" : ""}`} onClick={(e) => e.stopPropagation()}>
-            <button title="Mark as read" onClick={() => onMarkRead(m.id, true)}>✉️</button>
-            <button title="Delete" onClick={() => setConfirmId(m.id)}>🗑️</button>
-            <button title="Label" onClick={() => setLabelForId(m.id)}>🏷️</button>
-          </div>
-        </div>
-      ))}
+            <div className="column-3">
+             {actionHoverId === m.id ? (
+                <div className="actions" onClick={(e) => e.stopPropagation()}>
+                    {m.read ? (
+                            <button title="Mark as unread" 
+                                onClick={() => onMarkRead(m.id, false)}
+                                  >{React.createElement(FaEnvelopeOpen)}
+                            </button>
+                          ) : (
+                            <button title="Mark as read" 
+                                onClick={() => onMarkRead(m.id, true)}
+                                  >{React.createElement(FaEnvelope)}
+                            </button>
+                           )}
+                            <button title="Delete" onClick={() => setConfirmId(m.id)}>{React.createElement(FaTrash)}</button>
+                            <button title="Label" onClick={() => setLabelForId(m.id)}>{React.createElement(FaTag)}</button>
+                </div>
+              ) : (
+                  <div className="date-time">
+                    {new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
 
       {confirmId && (
         <DeletePopup
