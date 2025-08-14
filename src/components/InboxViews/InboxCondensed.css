@@ -1,9 +1,72 @@
-.list.condensed{display:flex;flex-direction:column;gap:10px}
-.list.condensed .row{display:grid;grid-template-columns:28px 280px 1fr 120px;align-items:center;border:3px solid var(--stroke);border-radius:12px;padding:8px 10px;background:#fff}
-.list.condensed .row.read{background:#f6f6f9;font-weight:500}
-.list.condensed .row.unread{font-weight:700}
-.list.condensed .row:hover{background:var(--row-hover);box-shadow:var(--row-shadow)}
-.list.condensed .star.on{color:#f5b301}
-.list.condensed .from{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.list.condensed .subject{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.list.condensed .time{text-align:right}
+.list.condensed{
+    display:flex;
+    flex-direction:column;
+     max-height: 70vh;
+    overflow-y: auto;
+    width: 100%;}
+
+.list.condensed .row{
+    position:relative;
+    display:grid;
+    grid-template-columns:20% 68% 12%;
+    align-items:center;
+    border-radius:14px;
+    padding:10px;
+    background:#fff;
+    transition:.15s;}
+    
+.list .row .column-1{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+.list .row .column-3{
+    align-items: center;
+    padding-right: 1vw;
+}
+
+
+.list .row.unread{
+    font-weight:700;
+    border-bottom:3px solid #9B77FF;
+    border-left:3px solid #9B77FF;}
+
+.list .row.read{
+    background:#EDEDED;
+    color:var(--ink);
+    font-weight:400;
+    border-bottom:3px solid var(--stroke);
+    border-left:3px solid var(--stroke);
+}
+
+.list.condensed .row:hover{
+    background:var(--row-hover);
+    box-shadow:var(--row-shadow)}
+
+.list.condensed .star.on{
+    color:#f5b301}
+
+.list.condensed .column-2{
+    align-items: center;
+    display:flex;
+    gap:8px;
+}
+.list.condensed .from{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis}
+
+.list.condensed .subject{
+    width: 65%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis}
+.list.condensed .excerpt{
+    width: 35%;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis}
+    
+
+.list.condensed .time{
+    text-align:right}
