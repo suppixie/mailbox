@@ -4,6 +4,8 @@ import InboxComfortable from "./components/InboxViews/InboxComfortable.jsx";
 import InboxCondensed from "./components/InboxViews/InboxCondensed.jsx";
 import InboxGrid from "./components/InboxViews/InboxGrid.jsx";
 import NewMailModal from "./components/Popups/NewMailModal.js";
+import { FaFilter, FaCheckSquare, FaSyncAlt, FaEllipsisV, FaCog , FaBars,FaSearch, FaThLarge, FaAlignJustify  } from "react-icons/fa";
+import { MdFormatLineSpacing } from "react-icons/md";
 import { initialFolders, initialEmails, defaultLabels } from "./Data/EmailData.js";
 import "./App.css";
 
@@ -97,22 +99,21 @@ export default function App() {
         title="Comfortable list"
         onClick={() => setView("comfortable")}
       >
-        {/* list with avatars */}
-        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="3" rx="1"/><rect x="3" y="10.5" width="18" height="3" rx="1"/><rect x="3" y="17" width="18" height="3" rx="1"/></svg>
+        {React.createElement(MdFormatLineSpacing )}
       </button>
       <button
         className={view === "condensed" ? "active" : ""}
         title="Condensed list"
         onClick={() => setView("condensed")}
       >
-        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="2"/><rect x="5" y="11" width="14" height="2"/><rect x="5" y="17" width="14" height="2"/></svg>
+        {React.createElement(FaAlignJustify)}
       </button>
       <button
         className={view === "grid" ? "active" : ""}
         title="Grid cards"
         onClick={() => setView("grid")}
       >
-        <svg width="22" height="22" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
+        {React.createElement(FaThLarge)}
       </button>
     </div>
   );
@@ -139,16 +140,16 @@ export default function App() {
     <div className="app-frame">
       <header className="topbar">
         <div className="brand">
-          <button className="hamburger" aria-label="menu">☰</button>
+          <button className="hamburger" aria-label="menu">{React.createElement(FaBars)}</button>
           <span className="logo">Mailbox</span>
         </div>
         <div className="search">
-          <span className="icon">🔍</span>
+          <span className="icon">{React.createElement(FaSearch)}</span>
           <input placeholder="Search" />
         </div>
         <div className="right-utilities">
           <ViewSwitcher />
-          <button className="gear" title="Settings">⚙️</button>
+          <button className="gear" title="Settings">{React.createElement(FaCog)}</button>
           <button className="avatar" title="Account">🪼</button>
         </div>
       </header>
@@ -167,10 +168,10 @@ export default function App() {
 
         <main className="mail-area">
           <div className="toolbar">
-            <button title="Filter">⚲</button>
-            <button title="Refresh">⟳</button>
-            <button title="Select">☑</button>
-            <button title="More">⋮</button>
+            <button title="Filter">{React.createElement(FaFilter)}</button>
+            <button title="Refresh">{React.createElement(FaSyncAlt)}</button>
+            <button title="Select">{React.createElement(FaCheckSquare)}</button>
+            <button title="More">{React.createElement(FaEllipsisV)}</button>
           </div>
           <ListByView />
         </main>

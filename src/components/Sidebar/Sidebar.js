@@ -56,7 +56,7 @@ export default function Sidebar({
             onClick={() => onSelectFolder(f.id)}
           >
             <span className="drag-handle">⋮⋮</span>
-            <span className="icon" aria-hidden>{f.icon}</span>
+            <span className="icon" aria-hidden>{React.createElement(f.icon)}</span>
             <span className="name">{f.name}</span>
             {/* {!f.isCategory && f.id === "drafts" ? <span className="count">3</span> : null} */}
           </li>

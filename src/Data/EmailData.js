@@ -1,14 +1,27 @@
+import React from "react";
+import {
+  FaInbox,
+  FaStar,
+  FaTrash,
+  FaPaperPlane,
+  FaRegEdit,
+  FaTag,
+  FaRegFile,
+  FaExclamationCircle
+
+} from "react-icons/fa";
+
 export const initialFolders = [
-  { id: "inbox", name: "Inbox", icon: "📥" },
-  { id: "sent", name: "Sent mails", icon: "✉️" },
-  { id: "drafts", name: "Drafts", icon: "📝" },
-  { id: "trash", name: "Trash", icon: "🗑️" },
-  { id: "spam", name: "Spam", icon: "🚫" },
-  { id: "starred", name: "Starred", icon: "⭐" },
-  { id: "documents", name: "Documents", icon: "🗂️" },
-  { id: "primary", name: "Primary", icon: "•", isCategory: true },
-  { id: "promotions", name: "Promotions", icon: "•", isCategory: true },
-  { id: "other", name: "Other", icon: "•", isCategory: true },
+  { id: "inbox", name: "Inbox", icon: FaInbox },
+  { id: "sent", name: "Sent mails", icon: FaPaperPlane },
+  { id: "drafts", name: "Drafts", icon: FaRegEdit },
+  { id: "trash", name: "Trash", icon: FaTrash },
+  { id: "spam", name: "Spam", icon: FaExclamationCircle },
+  { id: "starred", name: "Starred", icon: FaStar },
+  { id: "documents", name: "Documents", icon: FaRegFile },
+  { id: "primary", name: "Primary", icon: FaTag, isCategory: true },
+  { id: "promotions", name: "Promotions", icon: FaTag, isCategory: true },
+  { id: "other", name: "Other", icon: FaTag, isCategory: true },
 ];
 
 const now = Date.now();

@@ -3,21 +3,53 @@
   flex-direction:column;
   height:100%;
   background-color: white;
+  overflow: hidden;
+  scrollbar-width: thin;
 }
+
 .topbar{
-  height:64px;
-  display:flex;
+  min-height:12vh;
+  display:grid;
+  grid-template-columns: 15% 60% 20%;
+  column-gap: 2.5vw;
   align-items:center;
-  justify-content:space-between;
+  /* justify-content:space-between; */
   padding:0 20px;
   /* border-bottom:2px solid var(--stroke); */
 }
-.brand{display:flex;align-items:center;gap:14px}
-.logo{font-size:42px;font-weight:700}
-.hamburger{font-size:28px}
-.search{flex:1;max-width:760px;margin:0 32px;background:#f5f1ff;border:3px solid var(--stroke);border-radius:999px;height:48px;display:flex;align-items:center;padding:0 14px;gap:8px}
-.search .icon{opacity:.6}
-.search input{border:0;background:transparent;outline:0;width:100%}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:14px}
+
+.logo{
+  font-size:42px;
+  font-weight:700}
+
+.hamburger{
+  font-size:28px}
+
+.search{
+  /* flex:1; */
+  width:32vw;
+  margin:0 32px;
+  background:#f5f1ff;
+  border:3px solid #987AEB;
+  border-radius:999px;height:48px;
+  display:flex;
+  align-items:center;
+  padding:0 14px;
+  gap:8px
+}
+
+.search .icon{
+  opacity:.6}
+
+.search input{
+  border:0;
+  background:transparent;
+  outline:0;
+  width:100%}
 .right-utilities{display:flex;align-items:center;gap:10px}
 .view-toggle{display:flex;gap:8px;background:#f5f1ff;border:2px solid var(--stroke);padding:4px 6px;border-radius:14px}
 .view-toggle button{width:36px;height:32px;border-radius:8px}
@@ -29,17 +61,23 @@
   height:calc(100% - 64px)
 }
 .mail-area{
+  position: relative;
   flex:1;
-  padding:14px 18px 24px 12px;
-  overflow:auto}
+  padding:8px 18px 24px 12px;
+  overflow:auto
+}
 .toolbar{
+  position: sticky;
+  top:8px;
+  z-index:2;
   display:flex;
   width: 20%;
   gap:1vw;
   margin:8px 0 16px 0;
   border-radius:10px;
-  background:#f5f1ff;
-  border:2px solid var(--stroke)}
+  background:#987AEB40;
+  /* border:2px solid var(--stroke) */
+}
 
 .toolbar button{
   width:40px;

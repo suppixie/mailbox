@@ -1,4 +1,5 @@
 import React from "react";
+import { FaStar, FaRegStar } from "react-icons/fa";
 import "./InboxGrid.css";
 
 export default function InboxGrid({ emails, onOpenEmail, onToggleStar, onDragStartEmail }) {
@@ -11,7 +12,8 @@ export default function InboxGrid({ emails, onOpenEmail, onToggleStar, onDragSta
               className={`star ${m.starred ? "on" : ""}`}
               title="Star"
               onClick={(e) => { e.stopPropagation(); onToggleStar(m.id); }}
-            >★</button>
+              style={{color: m.starred ? "#FFD600" : "#bbb", }}
+              >{m.starred ? React.createElement(FaStar) : React.createElement(FaRegStar)}</button>
             <div className="time">{new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
           </div>
           <div className="avatar">{m.avatar}</div>

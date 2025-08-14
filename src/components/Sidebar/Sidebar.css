@@ -1,4 +1,5 @@
 .sidebar{
+  position: sticky;
   background:#cea6ff15;
   /* border-right:2px solid var(--stroke); */
   padding:16px 12px 24px 12px;

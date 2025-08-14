@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./InboxComfortable.css";
+import { FaStar, FaRegStar } from "react-icons/fa";
 import DeletePopup from "../Popups/DeletePopup.js";
 import LabelPopup from "../Popups/LabelPopup.js";
 
@@ -34,8 +35,8 @@ export default function InboxComfortable({
               e.stopPropagation();
               onToggleStar(m.id);
             }}
-            title="Star"
-          >★</button>
+            title="Star" style={{color: m.starred ? "#FFD600" : "#bbb", }}
+                          >{m.starred ? React.createElement(FaStar) : React.createElement(FaRegStar)}</button>
 
           <div className="avatar">{m.avatar}</div>
           <div className="main">

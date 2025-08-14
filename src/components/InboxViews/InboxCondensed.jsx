@@ -1,4 +1,5 @@
 import React from "react";
+import { FaStar, FaRegStar } from "react-icons/fa";
 import "./InboxCondensed.css";
 
 export default function InboxCondensed({ emails, onOpenEmail, onToggleStar, onDeleteEmail, onMarkRead, labelEmail, onDragStartEmail }) {
@@ -10,7 +11,8 @@ export default function InboxCondensed({ emails, onOpenEmail, onToggleStar, onDe
             className={`star ${m.starred ? "on" : ""}`}
             title="Star"
             onClick={(e) => { e.stopPropagation(); onToggleStar(m.id); }}
-          >★</button>
+            style={{color: m.starred ? "#FFD600" : "#bbb", }}
+                          >{m.starred ? React.createElement(FaStar) : React.createElement(FaRegStar)}</button>
           <div className="from">{m.from}</div>
           <div className="subject">{m.subject}</div>
           <div className="time">{new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</div>
