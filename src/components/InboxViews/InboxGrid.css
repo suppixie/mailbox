@@ -1,11 +1,102 @@
-.grid{display:grid;grid-template-columns:repeat(2, minmax(320px,1fr));gap:14px}
-.card{border:3px solid var(--stroke);border-radius:16px;padding:12px;background:#fff;display:flex;flex-direction:column;gap:8px}
-.card.read{background:#f6f6f9}
-.card:hover{background:var(--row-hover);box-shadow:var(--row-shadow)}
-.card-top{display:flex;justify-content:space-between;align-items:center}
-.card .star.on{color:#f5b301}
-.card .avatar{width:48px;height:48px;border-radius:50%;background:#e9e1ff;display:flex;align-items:center;justify-content:center;font-weight:800}
-.card .from{font-weight:700}
-.card.read .from{font-weight:500}
-.card .subject{font-size:15px}
-.card .excerpt{color:var(--muted)}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(45%,1fr));
+    column-gap: 1.5vw;}
+
+.card{
+    border-radius:16px;
+    padding:12px;
+    background:#fff;
+    display:flex;
+    flex-direction:column;
+    }
+.row-1{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;;
+}
+.grid-star-avatar-from{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.row-3{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+.card.read{
+    background:#f6f6f9;
+    border-right:3px solid var(--stroke);
+    border-bottom:3px solid var(--stroke);
+    border-left:3px solid var(--stroke);
+font-weight: 400;}
+
+.card.unread{
+    font-weight: 700;
+    border-right:3px solid #9B77FF;
+    border-bottom:3px solid #9B77FF;
+    border-left:3px solid #9B77FF;}
+.card:hover{
+    background:var(--row-hover);
+    box-shadow:var(--row-shadow)}
+
+
+.card .star.on{
+    color:#f5b301}
+
+.card .avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#e9e1ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800}
+
+.card .from{
+    font-weight:700}
+
+.card.read .from{
+    font-weight:400;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis
+}
+.card .subject{
+    font-size:14px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis}
+
+.card .excerpt{
+    color:var(--muted);
+    width: 80%;
+     white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis}
+.grid-actions{
+    color: grey;
+  align-items: center;
+  right: 10px;
+  pointer-events: auto;
+}
+.grid-actions button{
+    width: 34px;
+    height: 30px;
+    cursor: pointer;
+    color: grey;       
+    background: transparent;
+    border: none;
+    transition: color 0.15s;}
+.grid-actions button:hover{
+    color: black;
+}
+.card .time{
+    font-size: 12px;
+    color: var(--muted);
+    align-items: center;
+    padding-right: 2px;
+    vertical-align:bottom;
+}
