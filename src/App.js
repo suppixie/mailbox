@@ -82,11 +82,11 @@ export default function App() {
       .sort((a, b) => b.timestamp - a.timestamp);
   }, [emails, activeFolderId]);
 
-  const handleDropOnFolder = (payload, folderId) => {
-    if (payload.type === "email") {
-      moveEmailToFolder(payload.id, folderId);
-    } else if (payload.type === "folder-reorder") {
-      reorderFolders(payload.id, folderId);
+  const handleDropOnFolder = (item, folderId) => {
+    if (item.type === "email") {
+      moveEmailToFolder(item.id, folderId);
+    } else if (item.type === "folder-reorder") {
+      reorderFolders(item.id, folderId);
     }
   };
 
@@ -161,7 +161,7 @@ export default function App() {
           activeFolderId={activeFolderId}
           onSelectFolder={setActiveFolderId}
           setFolderOrder={setFolderOrder}
-          onDropPayload={handleDropOnFolder}
+          onDropItem={handleDropOnFolder}
           onOpenCompose={() => setShowCompose(true)}
         />
 
@@ -179,7 +179,7 @@ export default function App() {
       {showCompose && (
         <NewMailModal
           onClose={() => setShowCompose(false)}
-          onSend={(payload) => {
+          onSend={(item) => {
             // add to Sent
             const id = crypto.randomUUID();
             const now = Date.now();
@@ -193,9 +193,9 @@ export default function App() {
                 starred: false,
                 labels: [],
                 from: "You",
-                to: payload.to,
-                subject: payload.subject || "(no subject)",
-                excerpt: payload.body.slice(0, 120),
+                to: item.to,
+                subject: item.subject || "(no subject)",
+                excerpt: item.body.slice(0, 120),
                 timestamp: now,
                 avatar: "🟣",
               },

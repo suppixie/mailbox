@@ -8,7 +8,7 @@ export default function Sidebar({
   activeFolderId,
   onSelectFolder,
   setFolderOrder,
-  onDropPayload,
+  onDropItem,
   onOpenCompose,
 }) {
   const [dragFolderId, setDragFolderId] = useState(null);
@@ -25,8 +25,8 @@ export default function Sidebar({
   const onDrop = (targetId, ev) => {
     const data = ev.dataTransfer.getData("application/x-mailbox");
     if (!data) return;
-    const payload = JSON.parse(data);
-    onDropPayload(payload, targetId);
+    const item = JSON.parse(data);
+    onDropItem(item, targetId);
     setDragFolderId(null);
   };
 
@@ -41,8 +41,8 @@ export default function Sidebar({
   };
 
   return (
-    <aside className="sidebar">
-      <button className="compose" onClick={onOpenCompose}>+ New Mail</button>
+    <div className="sidebar">
+      <button className="compose-btn" onClick={onOpenCompose}>+ New Mail</button>
 
       <ul className="folder-list" role="listbox" aria-label="Folders">
         {top.map((f) => (
@@ -58,7 +58,7 @@ export default function Sidebar({
             <span className="drag-handle">⋮⋮</span>
             <span className="icon" aria-hidden>{f.icon}</span>
             <span className="name">{f.name}</span>
-            {!f.isCategory && f.id === "drafts" ? <span className="count">3</span> : null}
+            {/* {!f.isCategory && f.id === "drafts" ? <span className="count">3</span> : null} */}
           </li>
         ))}
       </ul>
@@ -71,6 +71,8 @@ export default function Sidebar({
           <li
             key={f.id}
             className={`folder-item ${activeFolderId === f.id ? "active" : ""}`}
+            draggable
+            onDragStart={(e) => onDragStartFolder(f.id, e)}
             onDragOver={(e) => e.preventDefault()}
             onDrop={(e) => onDrop(f.id, e)}
             onClick={() => onSelectFolder(f.id)}
@@ -88,6 +90,6 @@ export default function Sidebar({
           <li key={l}>#{l}</li>
         ))}
       </ul>
-    </aside>
+    </div>
   );
 }
