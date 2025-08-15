@@ -1,15 +1,33 @@
 .grid{
     display:grid;
     grid-template-columns:repeat(2, minmax(45%,1fr));
-    column-gap: 1.5vw;}
+    column-gap: 1.5vw;
+padding-left: 1.5vw;}
 
-.card{
+.card {
+    position: relative; /* <-- add this */
     border-radius:16px;
     padding:12px;
     background:#fff;
     display:flex;
     flex-direction:column;
-    }
+    cursor: pointer;
+}
+.mail-area-drag-handle {
+    position: absolute;
+    left: 0; 
+    top: 50%;
+    transform: translateY(-50%) translateX(-180%);
+    cursor: grab;
+    color: #888;
+    user-select: none;
+    font-size: 18px;
+    transition: color 0.15s;
+}
+.drag-handle:active {
+    cursor: grabbing;
+    color: #555;
+}
 .row-1{
     justify-content: space-between;
     display: flex;
@@ -26,7 +44,7 @@
     justify-content: space-between;
 }
 .card.read{
-    background:#f6f6f9;
+    background:#EDEDED;
     border-right:3px solid var(--stroke);
     border-bottom:3px solid var(--stroke);
     border-left:3px solid var(--stroke);

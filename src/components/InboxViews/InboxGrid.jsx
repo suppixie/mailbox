@@ -15,54 +15,67 @@ export default function InboxGrid({
 }) {
   const [confirmId, setConfirmId] = useState(null);
   const [labelForId, setLabelForId] = useState(null);
+  const [actionHoverId, setActionHoverId] = useState(null); // <-- Added
 
   return (
     <div className="grid">
       {emails.map((m) => (
-        <div
+       <div
           key={m.id}
           className={`card ${m.read ? "read" : "unread"}`}
           draggable
           onDragStart={(e) => onDragStartEmail(m.id, e)}
+          onMouseEnter={() => setActionHoverId(m.id)}
+          onMouseLeave={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget)) {
+              setActionHoverId(null);
+            }
+          }}
           onClick={() => onOpenEmail(m.id)}
         >
+          {(actionHoverId === m.id) && (
+            <span
+              className="mail-area-drag-handle"
+              draggable
+              onDragStart={(e) => onDragStartEmail(m.id, e)}
+              title="Drag to move"
+              onMouseEnter={() => setActionHoverId(m.id)} // keep hover active on handle
+            >
+              ⋮⋮
+            </span>
+          )}
+
           <div className="row-1">
             <div className="grid-star-avatar-from">
-            <button
-              className={`star ${m.starred ? "on" : ""}`}
-              title="Star"
-              onClick={(e) => {
-                e.stopPropagation();
-                onToggleStar(m.id);
-              }}
-              style={{ color: m.starred ? "#FFD600" : "#bbb" }}
-            >
-              {m.starred ? <FaStar /> : <FaRegStar />}
-            </button>
-            <div className="avatar">{m.avatar}</div>
-            <div className="from">{m.from}</div>
+              <button
+                className={`star ${m.starred ? "on" : ""}`}
+                title="Star"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onToggleStar(m.id);
+                }}
+                style={{ color: m.starred ? "#FFD600" : "#bbb" }}
+              >
+                {m.starred ? <FaStar /> : <FaRegStar />}
+              </button>
+              <div className="avatar">{m.avatar}</div>
+              <div className="from">{m.from}</div>
             </div>
             <div className="grid-actions" onClick={(e) => e.stopPropagation()}>
               {m.read ? (
-                <button
-                  title="Mark as unread"
-                  onClick={() => onMarkRead(m.id, false)}
-                >
-                  {React.createElement(FaEnvelopeOpen)}
+                <button title="Mark as unread" onClick={() => onMarkRead(m.id, false)}>
+                  <FaEnvelopeOpen />
                 </button>
               ) : (
-                <button
-                  title="Mark as read"
-                  onClick={() => onMarkRead(m.id, true)}
-                >
-                  {React.createElement(FaEnvelope)}
+                <button title="Mark as read" onClick={() => onMarkRead(m.id, true)}>
+                  <FaEnvelope />
                 </button>
               )}
               <button title="Delete" onClick={() => setConfirmId(m.id)}>
-                 {React.createElement(FaTrash)}
+                <FaTrash />
               </button>
               <button title="Label" onClick={() => setLabelForId(m.id)}>
-                 {React.createElement(FaTag)}
+                <FaTag />
               </button>
             </div>
           </div>
@@ -71,12 +84,7 @@ export default function InboxGrid({
           </div>
           <div className="row-3">
             <div className="excerpt">{m.excerpt}</div>
-            <div className="time">
-              {new Date(m.timestamp).toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </div>
+            <div className="time">{m.time}</div>
           </div>
         </div>
       ))}
