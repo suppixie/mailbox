@@ -25,7 +25,7 @@
   padding: 2vh 0;
 }
 .compose-btn:hover {
-  background: #7a66e6;
+  background: #6452ce;
 }
 .section{
   margin:18px 8px 6px;
@@ -69,9 +69,10 @@
   padding:2px 8px;
   font-weight:700}
 
-.less{
+.more{
   margin:12px 8px;
-  color:var(--muted)}
+  color:var(--muted);
+cursor: pointer;}
 
 .pill{
   background:#8f79ff;color:white;
@@ -103,4 +104,7 @@
   border:1px dashed var(--stroke);
   border-radius:10px;
   padding:6px 10px;
-  width:max-content}
+  width:max-content;
+  cursor: pointer;}
+.labels li:hover{
+  background:#dcd6ff;}
