@@ -20,6 +20,12 @@ export default function InboxCondensed({ emails, onOpenEmail, onToggleStar, onDe
           onMouseLeave={() => setActionHoverId(null)}
           onClick={() => onOpenEmail(m.id)}
         >         
+          {actionHoverId === m.id && (
+              <span className="mail-area-drag-handle"
+                draggable
+                onDragStart={(e) => onDragStartEmail(m.id, e)}
+                title="Drag to move" > ⋮⋮</span>
+            )}
           <div className="column-1">
           <button
             className={`star ${m.starred ? "on" : ""}`}
@@ -53,7 +59,7 @@ export default function InboxCondensed({ emails, onOpenEmail, onToggleStar, onDe
                           </div>
                         ) : (
                             <div className="date-time">
-                              {new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                              {m.time}
                             </div>
                           )}
                         </div>

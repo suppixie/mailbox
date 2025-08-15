@@ -3,7 +3,8 @@
     flex-direction:column;
      max-height: 70vh;
     overflow-y: auto;
-    width: 100%;}
+    width: 100%;
+padding-left: 1.5vw;}
 
 .list.condensed .row{
     position:relative;
@@ -13,8 +14,24 @@
     border-radius:14px;
     padding:10px;
     background:#fff;
-    transition:.15s;}
-    
+    transition:.15s;
+    cursor: pointer;
+}
+.mail-area-drag-handle {
+    position: absolute;
+    left: 0; 
+    top: 50%;
+    transform: translateY(-50%) translateX(-180%);
+    cursor: grab;
+    color: #888;
+    user-select: none;
+    font-size: 18px;
+    transition: color 0.15s;
+}
+.drag-handle:active {
+    cursor: grabbing;
+    color: #555;
+} 
 .list .row .column-1{
     display: flex;
     align-items: center;
