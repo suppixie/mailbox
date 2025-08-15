@@ -6,6 +6,7 @@ import InboxGrid from "./components/InboxViews/InboxGrid.jsx";
 import NewMailModal from "./components/Popups/NewMailModal.js";
 import { FaFilter, FaCheckSquare, FaSyncAlt, FaEllipsisV, FaCog , FaBars,FaSearch, FaThLarge, FaAlignJustify  } from "react-icons/fa";
 import { MdFormatLineSpacing } from "react-icons/md";
+import OpenEmailModal from "./components/Popups/OpenEmailModal.js";
 import { initialFolders, initialEmails, defaultLabels } from "./Data/EmailData.js";
 import "./App.css";
 
@@ -14,10 +15,12 @@ export default function App() {
   const [emails, setEmails] = useState(initialEmails);
   const [labels, setLabels] = useState(defaultLabels);
   const [activeFolderId, setActiveFolderId] = useState("inbox");
+  const [openEmailId, setOpenEmailId] = useState(null);
   const [view, setView] = useState("comfortable"); // comfortable | condensed | grid
   const [showCompose, setShowCompose] = useState(false);
+  const [showSentAlert, setShowSentAlert] = useState(false);
 
-  // unread counters for Primary, Promotions, Other
+
   const counters = useMemo(() => {
     const map = { primary: 0, promotions: 0, other: 0 };
     Object.values(emails).forEach((e) => {
@@ -34,6 +37,7 @@ export default function App() {
 
   const onOpenEmail = (id) => {
     setEmails((prev) => ({ ...prev, [id]: { ...prev[id], read: true } }));
+      setOpenEmailId(id);
   };
 
   const onToggleStar = (id) => {
@@ -79,10 +83,30 @@ export default function App() {
   };
 
   const visibleEmails = useMemo(() => {
-    return Object.values(emails)
-      .filter((e) => e.folder === activeFolderId)
-      .sort((a, b) => b.timestamp - a.timestamp);
-  }, [emails, activeFolderId]);
+  return Object.values(emails)
+    .filter((e) => {
+      // Starred
+      if (activeFolderId === "starred") return e.starred;
+
+      // Trash, Sent, Drafts, Inbox , Spam
+      if (["inbox", "sent", "trash", "drafts","spam"].includes(activeFolderId)) {
+        return e.folder === activeFolderId;
+      }
+
+      // Categories (Primary, Promotions, Other)
+      const folderObj = folders.find(f => f.id === activeFolderId);
+      if (folderObj?.isCategory) {
+        return e.category === activeFolderId;
+      }
+      //labels
+      if (labels.includes(activeFolderId)) {
+        return e.labels?.includes(activeFolderId);
+      }
+
+      return false;
+    })
+    .sort((a, b) => b.timestamp - a.timestamp);
+}, [emails, activeFolderId, folders, labels]);
 
   const handleDropOnFolder = (item, folderId) => {
     if (item.type === "email") {
@@ -131,9 +155,9 @@ export default function App() {
         ev.dataTransfer.effectAllowed = "move";
       },
     };
-    if (view === "condensed") return <InboxCondensed {...sharedProps} />;
-    if (view === "grid") return <InboxGrid {...sharedProps} />;
-    return <InboxComfortable {...sharedProps} />;
+    if (view === "condensed") return <InboxCondensed {...sharedProps} onOpenEmail={onOpenEmail} />;
+    if (view === "grid") return <InboxGrid {...sharedProps} onOpenEmail={onOpenEmail}/>;
+    return <InboxComfortable {...sharedProps} onOpenEmail={onOpenEmail} />;
   };
 
   return (
@@ -176,12 +200,11 @@ export default function App() {
           <ListByView />
         </main>
       </div>
-
+      
       {showCompose && (
         <NewMailModal
           onClose={() => setShowCompose(false)}
           onSend={(item) => {
-            // add to Sent
             const id = crypto.randomUUID();
             const now = Date.now();
             setEmails((prev) => ({
@@ -195,15 +218,36 @@ export default function App() {
                 labels: [],
                 from: "You",
                 to: item.to,
+                address:"patalaymamth@gmail.com",
                 subject: item.subject || "(no subject)",
                 excerpt: item.body.slice(0, 120),
-                timestamp: now,
-                avatar: "🟣",
+                time: now,
+                Date: new Date(now).toLocaleString(),
+                avatar: "🦑",
               },
             }));
             setShowCompose(false);
+            setShowSentAlert(true);
+            setTimeout(() => setShowSentAlert(false), 2500); 
           }}
         />
+      )}
+      {openEmailId && emails[openEmailId] && (
+  <OpenEmailModal
+    email={emails[openEmailId]}
+    onClose={() => setOpenEmailId(null)}
+    // onReply={() => {/* your reply logic here */}}
+    onToggleStar={() => onToggleStar(openEmailId)}
+    onDelete={() => {
+      onDeleteEmail(openEmailId);
+      setOpenEmailId(null);
+    }}
+    onMore={() => {}}
+  />
+)}
+      {showSentAlert && (
+        <div className="sent-alert"> Your email has been sent
+        </div>
       )}
     </div>
   );
