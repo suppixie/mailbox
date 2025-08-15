@@ -98,7 +98,7 @@
   font-size: 14px;
   position: relative;
   flex:1;
-  padding:8px 18px 24px 12px;
+  padding:8px 18px 12px 12px;
   overflow:auto
 }
 .toolbar{
