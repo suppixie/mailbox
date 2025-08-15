@@ -2,7 +2,7 @@
     display:flex;
     flex-direction:column;
     padding-left: 1.5vw;
-    max-height: 74.5vh;
+    max-height: 74vh;
     overflow-y: auto;
     width: 100%;
 bottom: 2px;}
