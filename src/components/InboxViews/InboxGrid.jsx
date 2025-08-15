@@ -26,11 +26,7 @@ export default function InboxGrid({
           draggable
           onDragStart={(e) => onDragStartEmail(m.id, e)}
           onMouseEnter={() => setActionHoverId(m.id)}
-          onMouseLeave={(e) => {
-            if (!e.currentTarget.contains(e.relatedTarget)) {
-              setActionHoverId(null);
-            }
-          }}
+          onMouseLeave={ () => setActionHoverId(null) }
           onClick={() => onOpenEmail(m.id)}
         >
           {(actionHoverId === m.id) && (
@@ -48,7 +44,7 @@ export default function InboxGrid({
           <div className="row-1">
             <div className="grid-star-avatar-from">
               <button
-                className={`star ${m.starred ? "on" : ""}`}
+                className={`star ${m.starred ? "on" : ""}`} aria-label="Star"
                 title="Star"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -63,18 +59,18 @@ export default function InboxGrid({
             </div>
             <div className="grid-actions" onClick={(e) => e.stopPropagation()}>
               {m.read ? (
-                <button title="Mark as unread" onClick={() => onMarkRead(m.id, false)}>
-                  <FaEnvelopeOpen />
+                <button aria-label="Mark as unread" title="Mark as unread" onClick={() => onMarkRead(m.id, false)}>
+                  < FaEnvelope/>
                 </button>
               ) : (
-                <button title="Mark as read" onClick={() => onMarkRead(m.id, true)}>
-                  <FaEnvelope />
+                <button aria-label="mark as read" title="Mark as read" onClick={() => onMarkRead(m.id, true)}>
+                  <FaEnvelopeOpen />
                 </button>
               )}
-              <button title="Delete" onClick={() => setConfirmId(m.id)}>
+              <button aria-label="delete" title="Delete" onClick={() => setConfirmId(m.id)}>
                 <FaTrash />
               </button>
-              <button title="Label" onClick={() => setLabelForId(m.id)}>
+              <button aria-label="label" title="Label" onClick={() => setLabelForId(m.id)}>
                 <FaTag />
               </button>
             </div>

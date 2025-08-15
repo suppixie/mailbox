@@ -44,18 +44,18 @@ export default function InboxCondensed({ emails, onOpenEmail, onToggleStar, onDe
               {actionHoverId === m.id ? (
                   <div className="actions" onClick={(e) => e.stopPropagation()}>
                       {m.read ? (
-                          <button title="Mark as unread" 
+                          <button aria-label="Mark as unread" title="Mark as unread" 
                               onClick={() => onMarkRead(m.id, false)}
-                                >{React.createElement(FaEnvelopeOpen)}
-                          </button>
-                          ) : (
-                          <button title="Mark as read" 
-                              onClick={() => onMarkRead(m.id, true)}
                                 >{React.createElement(FaEnvelope)}
                           </button>
+                          ) : (
+                          <button title="Mark as read"  aria-label="Mark as read"
+                              onClick={() => onMarkRead(m.id, true)}
+                                >{React.createElement(FaEnvelopeOpen)}
+                          </button>
                           )}
-                          <button title="Delete" onClick={() => setConfirmId(m.id)}>{React.createElement(FaTrash)}</button>
-                          <button title="Label" onClick={() => setLabelForId(m.id)}>{React.createElement(FaTag)}</button>
+                          <button aria-label="Delete" title="Delete" onClick={() => setConfirmId(m.id)}>{React.createElement(FaTrash)}</button>
+                          <button aria-label="label" title="Label" onClick={() => setLabelForId(m.id)}>{React.createElement(FaTag)}</button>
                           </div>
                         ) : (
                             <div className="date-time">

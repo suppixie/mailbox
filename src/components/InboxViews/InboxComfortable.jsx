@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./InboxComfortable.css";
-import { FaStar, FaRegStar, FaTag , FaTrash , FaEnvelope , FaEnvelopeOpen, FaBars } from "react-icons/fa";
+import { FaStar, FaRegStar, FaTag , FaTrash , FaEnvelope , FaEnvelopeOpen } from "react-icons/fa";
 import DeletePopup from "../Popups/DeletePopup.js";
 import LabelPopup from "../Popups/LabelPopup.js";
 import OpenEmailModal from "../Popups/OpenEmailModal.js"; 
@@ -20,6 +20,7 @@ export default function InboxComfortable({
 
   const [openedEmail, setOpenedEmail] = useState(null);
 
+  
   return (
     <>
       <div className="list comfortable">
@@ -67,23 +68,25 @@ export default function InboxComfortable({
                 <div className="actions" onClick={(e) => e.stopPropagation()}>
                   {m.read ? (
                     <button
+                    aria-label="Mark as unread"
                       title="Mark as unread"
                       onClick={() => onMarkRead(m.id, false)}
                     >
-                      <FaEnvelopeOpen />
+                      <FaEnvelope />
                     </button>
                   ) : (
                     <button
+                    aria-label="Mark as read"
                       title="Mark as read"
                       onClick={() => onMarkRead(m.id, true)}
                     >
-                      <FaEnvelope />
+                      <FaEnvelopeOpen />
                     </button>
                   )}
-                  <button title="Delete" onClick={() => setConfirmId(m.id)}>
+                  <button title="Delete" aria-label onClick={() => setConfirmId(m.id)}>
                     <FaTrash />
                   </button>
-                  <button title="Label" onClick={() => setLabelForId(m.id)}>
+                  <button title="Label" aria-label onClick={() => setLabelForId(m.id)}>
                     <FaTag />
                   </button>
                 </div>
@@ -105,17 +108,18 @@ export default function InboxComfortable({
             }}
           />
         )}
-
+   
         {labelForId && (
           <LabelPopup
             existingLabels={["Job Alerts", "Interviews"]}
             onClose={() => setLabelForId(null)}
             onSelect={(label) => {
-              labelEmail(labelForId, label);
+             labelEmail(labelForId, label);
               setLabelForId(null);
             }}
           />
         )}
+        
       </div>
 
       {openedEmail && (
