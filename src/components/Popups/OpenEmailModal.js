@@ -6,7 +6,7 @@ import {
   FaTrash,
   FaEllipsisV
 } from "react-icons/fa";
-import { LuMinimize2, LuMaximize2 } from "react-icons/lu";
+import { LuMinimize, LuMaximize2 } from "react-icons/lu";
 import { RxReset } from "react-icons/rx";
 import "./OpenEmailModal.css";
 
@@ -52,7 +52,7 @@ export default function OpenEmailModal({
               setViewMode(viewMode === "expanded" ? "normal" : "expanded");
             }}
           >
-            {viewMode === "expanded" ? <RxReset /> : <LuMaximize2 />}
+            {viewMode === "expanded" ? <LuMinimize /> : <LuMaximize2 />}
           </button>
 
           <button

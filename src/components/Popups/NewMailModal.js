@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import {FaFont, FaLink , FaImage , FaPaperclip, } from "react-icons/fa";
-import {LuMaximize2, LuMinimize2, LuX} from "react-icons/lu";
+import {LuMaximize2, LuX} from "react-icons/lu";
 import "./NewMailModal.css";
 
 export default function NewMailModal({ onClose, onSend }) {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
   const [to, setTo] = useState("");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
 
   return (
-      <div
-          className={`compose ${isExpanded ? "expanded" : ""} ${
-            isMinimized ? "minimized" : ""
-          }`}
-        >
+  <div className={`compose ${isMinimized ? "minimized" : ""}`}>
+
         <div className="header" onClick={() => {
           if (isMinimized) setIsMinimized(false);
         }}>

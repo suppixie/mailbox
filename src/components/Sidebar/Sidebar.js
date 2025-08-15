@@ -70,18 +70,20 @@ export default function Sidebar({
       <ul className="folder-list" role="listbox" aria-label="Folders">
        {foldersToShow.map((f) => (
           <li
-            key={f.id}
-            className={`folder-item ${activeFolderId === f.id ? "active" : ""}`}
-            draggable
-            onDragStart={(e) => onDragStartFolder(f.id, e)}
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => onDrop(f.id, e)}
-            onClick={() => onSelectFolder(f.id)}
-          >
-           <span className="drag-handle">⋮⋮</span>
-      <span className="icon" aria-hidden>{React.createElement(f.icon)}</span>
-      <span className="name">{f.name}</span>
-    </li>
+              key={f.id}
+              className={`folder-item 
+                          ${activeFolderId === f.id ? "active" : ""} 
+                          ${dragFolderId === f.id ? "dragging" : ""}`}
+              draggable
+              onDragStart={(e) => onDragStartFolder(f.id, e)}
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={(e) => onDrop(f.id, e)}
+              onClick={() => onSelectFolder(f.id)}
+            >
+              <span className="drag-handle">⋮⋮</span>
+              <span className="icon" aria-hidden>{React.createElement(f.icon)}</span>
+              <span className="name">{f.name}</span>
+            </li>
   ))}
 </ul>
 
