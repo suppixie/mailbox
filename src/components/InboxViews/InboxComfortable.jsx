@@ -83,10 +83,10 @@ export default function InboxComfortable({
                       <FaEnvelopeOpen />
                     </button>
                   )}
-                  <button title="Delete" aria-label onClick={() => setConfirmId(m.id)}>
+                  <button title="Delete" aria-label="trash" onClick={() => setConfirmId(m.id)}>
                     <FaTrash />
                   </button>
-                  <button title="Label" aria-label onClick={() => setLabelForId(m.id)}>
+                  <button title="Label" aria-label="label" onClick={() => setLabelForId(m.id)}>
                     <FaTag />
                   </button>
                 </div>

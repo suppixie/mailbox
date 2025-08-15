@@ -7,7 +7,6 @@ import {
   FaEllipsisV
 } from "react-icons/fa";
 import { LuMinimize, LuMaximize2 } from "react-icons/lu";
-import { RxReset } from "react-icons/rx";
 import "./OpenEmailModal.css";
 
 export default function OpenEmailModal({
