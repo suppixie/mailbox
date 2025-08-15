@@ -1,7 +1,7 @@
 .list.comfortable{
     display:flex;
     flex-direction:column;
-
+    padding-left: 1.5vw;
     max-height: 70vh;
     overflow-y: auto;
     width: 100%;}
@@ -15,6 +15,22 @@
     padding:10px;
     background:#fff;
     transition:.15s;
+    cursor: pointer;
+}
+.mail-area-drag-handle {
+    position: absolute;
+    left: 0; 
+    top: 50%;
+    transform: translateY(-50%) translateX(-180%);
+    cursor: grab;
+    color: #888;
+    user-select: none;
+    font-size: 18px;
+    transition: color 0.15s;
+}
+.drag-handle:active {
+    cursor: grabbing;
+    color: #555;
 }
 .list .row .column-1{
     display: flex;
@@ -36,6 +52,11 @@
     font-weight:400;
     border-bottom:3px solid var(--stroke);
     border-left:3px solid var(--stroke);
+}
+.list .row.read:hover,
+.list .row.unread:hover {
+    background: var(--row-hover);
+    box-shadow: var(--row-shadow);
 }
 
 .list .row:hover{
