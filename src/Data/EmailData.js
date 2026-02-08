@@ -4,13 +4,10 @@ import {
   FaTrash,
   FaPaperPlane,
   FaRegEdit,
-  FaTag,
   FaRegFile,
   FaExclamationCircle,
   FaExclamation,
   FaShoppingBag,
-  FaDotCircle,
-  FaCommentDots,
   FaMailBulk
 } from "react-icons/fa";
 

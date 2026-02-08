@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   font-family: "Inter", sans-serif;
-border:2px solid var(--stroke);
+    border:2px solid #556B2F;
     border-radius:16px;
     box-shadow:0 18px 36px rgba(0,0,0,.22);  z-index: 2000;
   overflow: hidden;
@@ -13,13 +13,13 @@ border:2px solid var(--stroke);
 
 .modal-container.normal {
   /* top: 60px; */
-  right: 18px;
+  right: 1.5vw;
   bottom: 20px;
   width: 50vw
 }
 
 .modal-container.minimized {
-  height: 7.5vh;
+  height: 7vh;
   width: 35vw;
   bottom: 20px;
   right: 20px;
@@ -30,20 +30,20 @@ border:2px solid var(--stroke);
 }
 
 .modal-container.expanded {
-  right: 18px;
-  bottom: 5vh;
-  height: 82vh;
-  width: 77.7vw;
+  right: 2vw;
+  bottom: 2vh;
+  height: 86vh;
+  width: 78vw;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #c7a8f5;
+    border-bottom:2px solid #556B2F;
   padding: 1vh 2vw;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   background: #fff;
 }
 
@@ -61,7 +61,6 @@ border:2px solid var(--stroke);
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 16px;
   padding: 4px;
   color: #555;
   border-radius: 6px;
@@ -132,13 +131,14 @@ border:2px solid var(--stroke);
 }
 .sender-right-actions {
   display: flex;
+  font-size: 14px;
   align-items: center;
   gap: 5px;
 }   
 
 .email-date-time {
-    margin-left: 3vw;
-  font-size: 12px;
+    margin-left: 4vw;
+  font-size: 10px;
   color: #777;
 }
 

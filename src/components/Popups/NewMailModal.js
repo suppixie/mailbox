@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {FaFont, FaLink , FaImage , FaPaperclip, } from "react-icons/fa";
+import {FaFont, FaLink , FaImage , FaPaperclip, FaPaperPlane, } from "react-icons/fa";
 import {LuMaximize2, LuX} from "react-icons/lu";
 import "./NewMailModal.css";
 
@@ -56,7 +56,7 @@ export default function NewMailModal({ onClose, onSend }) {
           <button className="tools" title="Insert link"> {React.createElement(FaLink)}</button>
           <button className="tools" title="Formatting"> {React.createElement(FaFont)}</button>
         </div>
-        <button className="send-btn" onClick={() => onSend({ to, subject, body })}>Send ▷</button>
+        <button className="send-btn" onClick={() => onSend({ to, subject, body })}>Send {React.createElement(FaPaperPlane)}</button>
       </div>
       </>
      )}
