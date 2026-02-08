@@ -168,7 +168,6 @@ border:2px solid var(--stroke);
   text-decoration: none;
 }
 
-/* Scrollbar styling */
 .modal-body::-webkit-scrollbar {
   width: 8px;
 }

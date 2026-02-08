@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./InboxComfortable.css";
 import { FaStar, FaRegStar, FaTag , FaTrash , FaEnvelope , FaEnvelopeOpen } from "react-icons/fa";
-import DeletePopup from "../Popups/DeletePopup.js";
+// import DeletePopup from "../Popups/DeletePopup.js";
 import LabelPopup from "../Popups/LabelPopup.js";
 import OpenEmailModal from "../Popups/OpenEmailModal.js"; 
 
@@ -15,7 +15,7 @@ export default function InboxComfortable({
   onDragStartEmail,
 }) {
   const [actionHoverId, setActionHoverId] = useState(null);
-  const [confirmId, setConfirmId] = useState(null);
+  // const [confirmId, setConfirmId] = useState(null);
   const [labelForId, setLabelForId] = useState(null);
 
   const [openedEmail, setOpenedEmail] = useState(null);
@@ -28,19 +28,19 @@ export default function InboxComfortable({
           <div
             key={m.id}
             className={`row ${m.read ? "read" : "unread"}`}
-            draggable
-            onDragStart={(e) => onDragStartEmail(m.id, e)}
             onMouseEnter={() => setActionHoverId(m.id)}
             onMouseLeave={() => setActionHoverId(null)}
             onClick={() => onOpenEmail(m.id)}   
                    >
-             {actionHoverId === m.id && (
-              <span className="mail-area-drag-handle"
-                draggable
-                onDragStart={(e) => onDragStartEmail(m.id, e)}
-                title="Drag to move" > ⋮⋮</span>
-            )}
+             {actionHoverId === m.id && ( 
+              <div className="mail-drag-handle-comfortable" 
+              draggable onDragStart={(e) => onDragStartEmail(m.id, e)}
+              title="Drag to move"> ⋮⋮</div>
+              
 
+            )}
+            
+            {actionHoverId !== m.id && <span className="span-comf" />}
             <div className="column-1">
               <button
                 className={`star ${m.starred ? "on" : ""}`}
@@ -83,7 +83,7 @@ export default function InboxComfortable({
                       <FaEnvelopeOpen />
                     </button>
                   )}
-                  <button title="Delete" aria-label="trash" onClick={() => setConfirmId(m.id)}>
+              <button aria-label="delete" title="Delete" onClick={() => onDeleteEmail(m.id)}>
                     <FaTrash />
                   </button>
                   <button title="Label" aria-label="label" onClick={() => setLabelForId(m.id)}>
@@ -98,7 +98,7 @@ export default function InboxComfortable({
             </div>
           </div>
         ))}
-
+{/* 
         {confirmId && (
           <DeletePopup
             onCancel={() => setConfirmId(null)}
@@ -108,7 +108,7 @@ export default function InboxComfortable({
             }}
           />
         )}
-   
+    */}
         {labelForId && (
           <LabelPopup
             existingLabels={["Job Alerts", "Interviews"]}

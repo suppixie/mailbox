@@ -4,7 +4,7 @@ import InboxComfortable from "./components/InboxViews/InboxComfortable.jsx";
 import InboxCondensed from "./components/InboxViews/InboxCondensed.jsx";
 import InboxGrid from "./components/InboxViews/InboxGrid.jsx";
 import NewMailModal from "./components/Popups/NewMailModal.js";
-import { FaFilter, FaCheckSquare, FaSyncAlt, FaEllipsisV, FaCog , FaBars,FaSearch, FaThLarge, FaAlignJustify  } from "react-icons/fa";
+import { FaFilter, FaCheckSquare, FaSyncAlt, FaEllipsisV, FaCog,FaSearch, FaThLarge, FaAlignJustify  } from "react-icons/fa";
 import { MdFormatLineSpacing } from "react-icons/md";
 import OpenEmailModal from "./components/Popups/OpenEmailModal.js";
 import { initialFolders, initialEmails, defaultLabels } from "./Data/EmailData.js";
@@ -164,7 +164,6 @@ export default function App() {
     <div className="app-frame">
       <header className="topbar">
         <div className="brand">
-          <button className="hamburger" aria-label="menu">{React.createElement(FaBars)}</button>
           <span className="logo">Mailbox</span>
         </div>
         <div className="search">
@@ -236,7 +235,6 @@ export default function App() {
   <OpenEmailModal
     email={emails[openEmailId]}
     onClose={() => setOpenEmailId(null)}
-    // onReply={() => {/* your reply logic here */}}
     onToggleStar={() => onToggleStar(openEmailId)}
     onDelete={() => {
       onDeleteEmail(openEmailId);

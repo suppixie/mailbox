@@ -2,11 +2,15 @@
   display:flex;
   flex-direction:column;
   height:100%;
-  background-color: white;
+  background-color: #fcfcf9;
+  /* background-color: #EFD473; */
+  /* background-image: url("C:/Users/mamth/Downloads/32237069_sl_072622_51930_13.svg"); */
   overflow: hidden;
   scrollbar-width: thin;
 }
-
+.app-frame::before{
+  background: rgba(255, 255, 255, 0.9);
+}
 .topbar{
   min-height:12vh;
   display:grid;
@@ -16,8 +20,8 @@
     /* background-color: #dbceff; */
   /* border-radius: 10px; */
   /* justify-content:space-between; */
-  padding:0 1vw;
-  border-bottom:1px solid #cdbbff;
+  padding:0.5vw 1.5vw 1vw 1.5vw;
+  /* border-bottom:1px solid #cdbbff; */
 }
 .brand{
   display:flex;
@@ -26,6 +30,7 @@
 
 .logo{
   font-size:2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight:700}
 
 .hamburger{
@@ -33,9 +38,9 @@
 
 .search{
   width:32vw;
-  margin:0 32px;
-  background:#f5f1ff;
-  border:3px solid #987AEB;
+  margin:0 24px;
+  /* background:#f5f1ff; */
+  border:3px solid #556B2F;
   border-radius:999px;height:48px;
   display:flex;
   align-items:center;
@@ -74,48 +79,47 @@
 .view-toggle{
   display:flex;
   gap:8px;
-  background:#f5f1ff;
-  border:2px solid var(--stroke);
+  border:2px solid #556B2F;
   padding:4px 6px;
   border-radius:40px}
 
 .view-toggle button{
   width:36px;
-  height:32px;
+  height:30px;
   border-radius:80px}
 
 .view-toggle button.active{
-  background:#8562E5;
+  background:#556B2F;
   color:white}
 
 .content{
   display:grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 18% 82%;
   height:calc(100% - 64px);
   /* padding-top: 1vh; */
 }
 .mail-area{
-  font-size: 14px;
+  font-size: 12px;
   position: relative;
   flex:1;
-  padding:8px 18px 12px 12px;
+  padding:0px 18px 12px 12px;
   overflow:auto
 }
 .toolbar{
   position: sticky;
   padding: 1vh;
-  top:8px;
   z-index:2;
   display:flex;
-  width: 20%;
+  width: 15%;
   gap:1vw;
-  margin:8px 0 16px 1.5vw;
+  margin:0px 0 16px 1.5vw;
   border-radius:10px;
-  background:#987AEB40;
-  /* border:2px solid var(--stroke) */
+  background:#6daa022c;
+  border-left:3px solid #556B2F;
 }
 
 .toolbar button{
-  width:40px;
+  width:30px;
   height:36px;
+  font-size:15px;
   }

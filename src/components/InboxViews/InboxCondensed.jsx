@@ -1,31 +1,32 @@
 import React, {useState} from "react";
 import { FaStar, FaRegStar, FaTrash, FaTag, FaEnvelope, FaEnvelopeOpen } from "react-icons/fa";
-import DeletePopup from "../Popups/DeletePopup.js";
+// import DeletePopup from "../Popups/DeletePopup.js";
 import LabelPopup from "../Popups/LabelPopup.js";
 import "./InboxCondensed.css";
 
 export default function InboxCondensed({ emails, onOpenEmail, onToggleStar, onDeleteEmail, onMarkRead, labelEmail, onDragStartEmail }) {
     const [actionHoverId, setActionHoverId] = useState(null);
-    const [confirmId, setConfirmId] = useState(null);
+    // const [confirmId, setConfirmId] = useState(null);
     const [labelForId, setLabelForId] = useState(null);
   return (
     <div className="list condensed">
       {emails.map((m) => (
-        <div 
-          key={m.id} 
-          className={`row ${m.read ? "read" : "unread"}`} 
-          draggable
-          onDragStart={(e) => onDragStartEmail(m.id, e)}
-          onMouseEnter={() => setActionHoverId(m.id)}
-          onMouseLeave={() => setActionHoverId(null)}
-          onClick={() => onOpenEmail(m.id)}
-        >         
-          {actionHoverId === m.id && (
-              <span className="mail-area-drag-handle"
-                draggable
-                onDragStart={(e) => onDragStartEmail(m.id, e)}
-                title="Drag to move" > ⋮⋮</span>
+          <div
+            key={m.id}
+            className={`row ${m.read ? "read" : "unread"}`}
+            onMouseEnter={() => setActionHoverId(m.id)}
+            onMouseLeave={() => setActionHoverId(null)}
+            onClick={() => onOpenEmail(m.id)}   
+                   >
+             {actionHoverId === m.id && ( 
+              <div className="mail-drag-handle-condensed" 
+              draggable onDragStart={(e) => onDragStartEmail(m.id, e)}
+              title="Drag to move"> ⋮⋮</div>
+              
+
             )}
+            
+            {actionHoverId !== m.id && <span className="span-cond" />}
           <div className="column-1">
           <button
             className={`star ${m.starred ? "on" : ""}`}
@@ -54,7 +55,8 @@ export default function InboxCondensed({ emails, onOpenEmail, onToggleStar, onDe
                                 >{React.createElement(FaEnvelopeOpen)}
                           </button>
                           )}
-                          <button aria-label="Delete" title="Delete" onClick={() => setConfirmId(m.id)}>{React.createElement(FaTrash)}</button>
+                                       <button aria-label="delete" title="Delete" onClick={() => onDeleteEmail(m.id)}>
+{React.createElement(FaTrash)}</button>
                           <button aria-label="label" title="Label" onClick={() => setLabelForId(m.id)}>{React.createElement(FaTag)}</button>
                           </div>
                         ) : (
@@ -66,7 +68,7 @@ export default function InboxCondensed({ emails, onOpenEmail, onToggleStar, onDe
             </div>
           ))}
           
-          {confirmId && (
+          {/* {confirmId && (
               <DeletePopup
                 onCancel={() => setConfirmId(null)}
                 onConfirm={() => {
@@ -74,17 +76,18 @@ export default function InboxCondensed({ emails, onOpenEmail, onToggleStar, onDe
                   setConfirmId(null);
                 }}
               />
-            )}
+            )} */}
       
-            {labelForId && (
-              <LabelPopup
-                onClose={() => setLabelForId(null)}
-                onSelect={(label) => {
-                  labelEmail(labelForId, label);
-                  setLabelForId(null);
-                }}
-              />
-            )}
+           {labelForId && (
+                     <LabelPopup
+                       existingLabels={["Job Alerts", "Interviews"]}
+                       onClose={() => setLabelForId(null)}
+                       onSelect={(label) => {
+                        labelEmail(labelForId, label);
+                         setLabelForId(null);
+                       }}
+                     />
+                   )}
     </div>
   );
 }

@@ -1,15 +1,29 @@
+.menu{
+  margin-left: 1.5vw;}
+
+.sidebar-header{
+  display: flex;
+  gap: 2vh;
+}
 .sidebar{
-  position: sticky;
-  background:#cea6ff15;
-  /* border-right:2px solid var(--stroke); */
+      height: 80%;
+  font-size: 14px;
+  color: black;
+  /* position: sticky; */
+  /* background:#fef5cd; */
+  box-shadow: 1px 2px 4px #556B2F;
+  background-color: #efffd2b7;
+  border-left: 4px solid #556B2F;
+  
   padding:16px 12px 24px 12px;
   overflow-x:hidden;
-  margin-left: 1vw;
-  border-left: 4px solid #987AEB;
+  overflow-y: scroll;
   border-radius: 10px;
   scrollbar-width: thin;         
   scrollbar-color: #9d9d9d9d #f5f1ff; 
-  scroll-behavior: smooth;}
+  /* scroll-behavior: smooth; */
+}
+
 
 
 .compose-btn {
@@ -17,25 +31,29 @@
   display:block !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
-  background:#8562E5;
+  background-color: #556B2F;
   color:white;
-  border-radius:12px;padding:2px 8px;
+  border-radius:12px;
+  padding:2px 8px;
   font-weight:700;
   margin-bottom:2vh;
   padding: 2vh 0;
 }
 .compose-btn:hover {
-  background: #6452ce;
+  background: #685508;
+  filter: drop-shadow(0px 2px 2px black);
 }
 .section{
   margin:18px 8px 6px;
   font-weight:700;
-  color:#4a3da8}
+  color:black
+}
 
 .folder-list{
   list-style:none;
   padding:0;
-  margin:0}
+  margin:0;
+}
 
 .folder-item{
   display:flex;
@@ -46,14 +64,16 @@
   border:2px solid transparent}
 
 .folder-item.active{
-  background:#ede6ff;
-  border-color:var(--stroke)}
+  background: #b6d085;
+  color: black;
+  filter: drop-shadow(0px 1px 2px rgb(101, 134, 23));
+}
 
 .folder-item:hover{
-  background:#987AEB30}
+  background:#e6e47a}
 
 .folder-item .drag-handle{
-  opacity:.5;
+  opacity:.8;
   cursor:grab}
 
 .folder-item .icon{
@@ -71,20 +91,20 @@
 
 .more{
   margin:12px 8px;
-  color:var(--muted);
+  color :black;
 cursor: pointer;}
 
 .pill{
-  background:#8f79ff;color:white;
+  background:#556B2F;color:white;
   border-radius:12px;padding:2px 8px;
   font-weight:700}
 
-.dot{
+/* .dot{
   width:8px;
   height:8px;
   border-radius:50%;
-  background:#6f5ad3;
-  margin:0 6px}
+  background:#556B2F;
+  margin:0 6px} */
 
 .labels-head{
   display:flex;
@@ -100,7 +120,7 @@ cursor: pointer;}
   gap:6px}
 
 .labels li{
-  background:#efe9ff;
+  background:#556B2F36;
   border:1px dashed var(--stroke);
   border-radius:10px;
   padding:6px 10px;

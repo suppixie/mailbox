@@ -6,7 +6,12 @@ import {
   FaRegEdit,
   FaTag,
   FaRegFile,
-  FaExclamationCircle
+  FaExclamationCircle,
+  FaExclamation,
+  FaShoppingBag,
+  FaDotCircle,
+  FaCommentDots,
+  FaMailBulk
 } from "react-icons/fa";
 
 export const initialFolders = [
@@ -17,9 +22,9 @@ export const initialFolders = [
   { id: "spam", name: "Spam", icon: FaExclamationCircle },
   { id: "starred", name: "Starred", icon: FaStar },
   { id: "documents", name: "Documents", icon: FaRegFile },
-  { id: "primary", name: "Primary", icon: FaTag, isCategory: true },
-  { id: "promotions", name: "Promotions", icon: FaTag, isCategory: true },
-  { id: "other", name: "Other", icon: FaTag, isCategory: true },
+  { id: "primary", name: "Primary", icon: FaExclamation, isCategory: true },
+  { id: "promotions", name: "Promotions", icon: FaShoppingBag, isCategory: true },
+  { id: "other", name: "Other", icon: FaMailBulk, isCategory: true },
 ];
 
 
@@ -31,6 +36,7 @@ export const initialEmails = {
     address:"netflix@gmail.com",
     read: false,
     starred: false,
+    new: true,
     labels: [],
     from: "Netflix",
     subject: "Your Netflix temporary access code",
@@ -68,7 +74,7 @@ content: `
   <small style="color:#777;">This is an automated message. Please do not reply.</small>
 </div>
 `
-,    time:"9:00 PM",
+,    time:"1:00 PM",
     date:"15/08/2025",
     avatar: "N",
   },
@@ -79,6 +85,7 @@ content: `
     address:"pigtowntimes@gmail.com",
     read: false,
     starred: false,
+        new: true,
     labels: [],
     from: "Pigtown Times",
     subject: "Twilight Thursday & August Long Weekend",
@@ -114,7 +121,7 @@ content: `
         <hr style="border:none; border-top:1px solid #ccc; margin:20px 0;"/>
         <small style="color:#888;">Pigtown Times, Limerick, Ireland</small>
       </div>
-    `,    time:"7:15 PM",
+    `,    time:"11:15 AM",
     date:"15/08/2025",
     avatar: "📰",
   },
@@ -125,6 +132,7 @@ content: `
     address:"linkedin.jobalerts@gmail.com",
     read: true,
     starred: false,
+        new: true,
     labels: ["Job Alerts"],
     from: "LinkedIn",
     subject: "New jobs similar to Staff Product Designer at TheyDo",
@@ -146,7 +154,7 @@ content: `
           <a href="https://linkedin.com" style="color:#0073b1; font-weight:bold;">See who viewed your profile →</a>
         </p>
       </div>
-    `,    time:"2:20 PM",
+    `,    time:"9:20 AM",
     date:"15/08/2025",    
     avatar: "in",
   },
@@ -157,6 +165,7 @@ content: `
     address: "github@security.com",
     read: false,
     starred: false,
+        new: true,
     labels: [],
     from: "GitHub",
     subject: "Security Alert: Suspicious login detected",
@@ -173,7 +182,7 @@ content: `
         <p>If this was you, you can ignore this email. If not, please <a href="#">secure your account</a>.</p>
       </div>
     `,
-    time: "4:25 PM",
+    time: "8:46 AM",
     date: "15/08/2025",
     avatar: "🐙",
   },
@@ -184,6 +193,7 @@ content: `
     address: "ryanair@booking.com",
     read: false,
     starred: false,
+    new: false,
     labels: [],
     from: "Ryanair",
     subject: "Your flight itinerary – Dublin to Rome",
@@ -212,6 +222,7 @@ content: `
     address: "amazon@order.com",
     read: false,
     starred: true,
+        new: false,
     labels: [],
     from: "Amazon",
     subject: "Your Amazon order has been shipped",
@@ -244,6 +255,7 @@ content: `
     address: "spotify@payments.com",
     read: true,
     starred: false,
+        new: false,
     labels: [],
     from: "Spotify",
     subject: "Your Premium payment receipt",
@@ -273,6 +285,7 @@ content: `
     address: "udemy@courses.com",
     read: false,
     starred: false,
+        new: false,
     labels: [],
     from: "Udemy",
     subject: "Congratulations! You've completed 'React for Beginners'",
@@ -300,6 +313,7 @@ content: `
     address: "canva@share.com",
     read: true,
     starred: false,
+        new: false,
     labels: [],
     from: "Canva",
     subject: "A design was shared with you",
@@ -325,6 +339,7 @@ content: `
     address: "paypal@alerts.com",
     read: false,
     starred: false,
+        new: false,
     labels: [],
     from: "PayPal",
     subject: "Unusual activity detected",
@@ -351,6 +366,7 @@ content: `
     category: "other",
     address: "daily@recipebox.com",
     read: true,
+        new: false,
     starred: false,
     labels: [],
     from: "Recipe Box",
@@ -368,6 +384,7 @@ content: `
     address: "patalaymamtha@gmail.com",
     read: false,
     starred: false,
+        new: false,
     labels: [],
     from: "Mamtha Patalay",
     subject: "(Draft) Follow-up on Meeting",
@@ -383,6 +400,7 @@ content: `
     category: "primary",
     address: "patalaymamtha@gmail.com",
     read: true,
+        new: false,
     starred: false,
     labels: [],
     from: "Mamtha Patalay",
