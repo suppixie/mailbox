@@ -144,6 +144,7 @@ font-size: medium;}
     color: black;
 }
 .card .time{
+    padding-top:0.5vh;
     font-size: 10px;
     color: var(--muted);
     align-items: center;

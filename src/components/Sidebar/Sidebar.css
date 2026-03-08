@@ -19,7 +19,7 @@
   overflow-x:hidden;
   overflow-y: scroll;
   border-radius: 10px;
-  scrollbar-width: thin;         
+  scrollbar-width: none;         
   scrollbar-color: #9d9d9d9d #f5f1ff; 
   /* scroll-behavior: smooth; */
 }

@@ -164,7 +164,7 @@ export default function App() {
     <div className="app-frame">
       <header className="topbar">
         <div className="brand">
-          <span className="logo">Mailbox</span>
+          <span className="logo">Wasabi</span>
         </div>
         <div className="search">
           <span className="icon">{React.createElement(FaSearch)}</span>
