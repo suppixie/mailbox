@@ -11,11 +11,12 @@ export default function Sidebar({
   setFolderOrder,
   onDropItem,
   onOpenCompose,
+  collapsed,
+  setCollapsed,
 }) {
   const [showAllFolders, setShowAllFolders] = useState(false);
   const [dragFolderId, setDragFolderId] = useState(null);
 
-  
 
   const onDragStartFolder = (id, ev) => {
     setDragFolderId(id);
@@ -67,11 +68,11 @@ export default function Sidebar({
   return (
     <div className="menu">
       <div className="sidebar-header">
-          <button className="hamburger" aria-label="menu">{React.createElement(FaBars)}</button>
-        <button className="compose-btn" onClick={onOpenCompose}>+ New Mail</button>
+          <button className="hamburger"  onClick={() => setCollapsed(!collapsed)} alt="menu">{React.createElement(FaBars)}</button>
+        <button alt="New Mail" className={`compose-btn ${collapsed ? "collapsed" : ""}`}  onClick={onOpenCompose}> {collapsed ? "+" : "+ New Mail"} </button>
       </div>
-      <div className="sidebar">
-      <ul className="folder-list" role="listbox" aria-label="Folders">
+      <div className={`sidebar ${collapsed ? "collapsed" : ""}`} >
+      <ul className="folder-list" role="listbox"  aria-label="Folders">
        {foldersToShow.map((f) => (
           <li
               key={f.id}
@@ -111,7 +112,8 @@ export default function Sidebar({
             onClick={() => onSelectFolder(f.id)} 
           >
             <span className="drag-handle">⋮⋮</span>
-            <span className="dot">{React.createElement(f.icon)}</span>
+            {/* <span className="dot">{React.createElement(f.icon)}</span> */}
+            <span className="icon" aria-hidden>{React.createElement(f.icon)}</span>
             <span className="name">{f.name}</span>
             {counterFor(f.id) > 0 && <span className="pill">{counterFor(f.id)}</span>}
           </li>

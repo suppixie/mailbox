@@ -3,7 +3,7 @@
 
 .sidebar-header{
   display: flex;
-  gap: 2vh;
+  gap: 1vw;
 }
 .sidebar{
       height: 80%;
@@ -34,7 +34,7 @@
   background-color: #556B2F;
   color:white;
   border-radius:12px;
-  padding:2px 8px;
+  /* padding:2px 8px; */
   font-weight:700;
   margin-bottom:2vh;
   padding: 2vh 0;
@@ -127,4 +127,24 @@ cursor: pointer;}
   width:max-content;
   cursor: pointer;}
 .labels li:hover{
-  background:#dcd6ff;}
+  background:#e6e47a;}
+
+  .sidebar.collapsed{
+    width: 100%;
+    height: auto;
+  }
+
+  .sidebar.collapsed .folder-item .name, .sidebar.collapsed .folder-item .drag-handle,.more , .sidebar.collapsed .labels-head, .sidebar.collapsed .labels,.sidebar.collapsed .pill, .sidebar.collapsed .section{
+    display: none;
+  }
+  .sidebar.collapsed .folder-item .icon{
+    width:100%;
+    font-size: larger;
+    text-align:center;
+  }
+
+  .compose-btn.collapsed{
+    padding: 2vh 0;
+    width: 100%;
+    font-size: large;
+  }

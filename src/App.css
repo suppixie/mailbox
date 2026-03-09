@@ -51,7 +51,7 @@
   position: fixed;
   bottom: 32px;
   right: 32px;
-  background: #cdbbff;
+  background: #e6e47a;
   color: black;
   padding: 14px 28px;
   border-radius: 15px;
@@ -98,12 +98,15 @@
   height:calc(100% - 64px);
   /* padding-top: 1vh; */
 }
+.content.sidebar-collapsed {
+  grid-template-columns: 8% 92%;
+}
 .mail-area{
   font-size: 12px;
   position: relative;
   flex:1;
   padding:0px 18px 12px 12px;
-  overflow:auto
+  /* overflow:auto */
 }
 .toolbar{
   position: sticky;

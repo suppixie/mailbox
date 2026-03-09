@@ -19,7 +19,7 @@ export default function App() {
   const [view, setView] = useState("comfortable"); // comfortable | condensed | grid
   const [showCompose, setShowCompose] = useState(false);
   const [showSentAlert, setShowSentAlert] = useState(false);
-
+  const [collapsed, setCollapsed] = useState(false);
 
   const counters = useMemo(() => {
     const map = { primary: 0, promotions: 0, other: 0 };
@@ -177,8 +177,9 @@ export default function App() {
         </div>
       </header>
 
-      <div className="content">
+      <div className={`content ${collapsed ? "sidebar-collapsed" : ""}`} >
         <Sidebar
+          collapsed={collapsed} setCollapsed={setCollapsed}
           folders={folders}
           labels={labels}
           counters={counters}
@@ -247,6 +248,8 @@ export default function App() {
         <div className="sent-alert"> Your email has been sent
         </div>
       )}
+
+    
     </div>
   );
 }

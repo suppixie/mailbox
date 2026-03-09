@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./InboxComfortable.css";
 import { FaStar, FaRegStar, FaTag , FaTrash , FaEnvelope , FaEnvelopeOpen } from "react-icons/fa";
-// import DeletePopup from "../Popups/DeletePopup.js";
 import LabelPopup from "../Popups/LabelPopup.js";
 import OpenEmailModal from "../Popups/OpenEmailModal.js"; 
 
@@ -15,14 +14,20 @@ export default function InboxComfortable({
   onDragStartEmail,
 }) {
   const [actionHoverId, setActionHoverId] = useState(null);
-  // const [confirmId, setConfirmId] = useState(null);
   const [labelForId, setLabelForId] = useState(null);
-
+const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const [openedEmail, setOpenedEmail] = useState(null);
 
+  const handleDelete = (id) => {
+        setShowDeleteAlert(true);
+    onDeleteEmail(id);
+    setTimeout(() => setShowDeleteAlert(false), 3000);
+  };
   
   return (
     <>
+    
+
       <div className="list comfortable">
         {emails.map((m) => (
           <div
@@ -83,7 +88,7 @@ export default function InboxComfortable({
                       <FaEnvelopeOpen />
                     </button>
                   )}
-              <button aria-label="delete" title="Delete" onClick={() => onDeleteEmail(m.id)}>
+              <button aria-label="delete" title="Delete" onClick={() => handleDelete(m.id) }>
                     <FaTrash />
                   </button>
                   <button title="Label" aria-label="label" onClick={() => setLabelForId(m.id)}>
@@ -98,17 +103,7 @@ export default function InboxComfortable({
             </div>
           </div>
         ))}
-{/* 
-        {confirmId && (
-          <DeletePopup
-            onCancel={() => setConfirmId(null)}
-            onConfirm={() => {
-              onDeleteEmail(confirmId);
-              setConfirmId(null);
-            }}
-          />
-        )}
-    */}
+
         {labelForId && (
           <LabelPopup
             existingLabels={["Job Alerts", "Interviews"]}
@@ -121,6 +116,7 @@ export default function InboxComfortable({
         )}
         
       </div>
+   
 
       {openedEmail && (
         <OpenEmailModal
@@ -134,6 +130,10 @@ export default function InboxComfortable({
           }}
           onMore={() => console.log("More actions")}
         />
+      )}
+       {showDeleteAlert && (
+        <div className="delete-alert"> Email Deleted
+        </div>
       )}
     </>
   );
