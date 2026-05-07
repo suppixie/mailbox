@@ -93,10 +93,10 @@ export default function Sidebar({
 </ul>
 
 {hasMore && !showAllFolders && (
-  <div className="more" onClick={() => setShowAllFolders(true)}>more ▾</div>
+  <div className="more show-full-list" onClick={() => setShowAllFolders(true)}>more ▾</div>
 )}
 {hasMore && showAllFolders && (
-  <div className="more" onClick={() => setShowAllFolders(false)}>less ▴</div>
+  <div className="more show-short list" onClick={() => setShowAllFolders(false)}>less ▴</div>
 )}
 
       <div className="section">Categories</div>

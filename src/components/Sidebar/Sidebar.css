@@ -1,12 +1,13 @@
 .menu{
-  margin-left: 1.5vw;}
+  margin-left: 1.5vw;
+height: 95vh;}
 
 .sidebar-header{
   display: flex;
   gap: 1vw;
 }
 .sidebar{
-      height: 80%;
+      max-height: 80%;
   font-size: 14px;
   color: black;
   /* position: sticky; */
@@ -94,6 +95,13 @@
   color :black;
 cursor: pointer;}
 
+
+.more.show-short-list{
+  .sidebar &{
+    height: 80%;
+    overflow-y: scroll;}
+ }
+
 .pill{
   background:#556B2F;color:white;
   border-radius:12px;padding:2px 8px;
@@ -134,7 +142,7 @@ cursor: pointer;}
     height: auto;
   }
 
-  .sidebar.collapsed .folder-item .name, .sidebar.collapsed .folder-item .drag-handle,.more , .sidebar.collapsed .labels-head, .sidebar.collapsed .labels,.sidebar.collapsed .pill, .sidebar.collapsed .section{
+  .sidebar.collapsed .folder-item .name, .sidebar.collapsed .folder-item .drag-handle,.sidebar.collapsed .more , .sidebar.collapsed .labels-head, .sidebar.collapsed .labels,.sidebar.collapsed .pill, .sidebar.collapsed .section{
     display: none;
   }
   .sidebar.collapsed .folder-item .icon{
